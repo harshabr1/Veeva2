@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPageWebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <availability>online</availability>
+    <description>Used to redirect to the BOT Website</description>
+    <displayType>link</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>BusinessOne Help Manual</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>window.open(&quot;http://www.businessonetech.com/&quot;);</url>
+</CustomPageWebLink>

@@ -1,0 +1,42 @@
+<!--
+Name            : BOT_Drug_Access_Component
+Created by      : Sreenivasulu Adipudi
+Created date    : 14-DEC-2018
+Description     : This Visualforce Components is created by BusinessOneTechnologies Inc. It is used to build the drug access dashboard. 
+				  This component is used in BOT_DrugAccess_Dashboard and BOT_DrugAccessOnPlanProductView visualforce pages. 
+-->
+<apex:component >
+   	<script>
+    	function reportView(accountIdValue) {
+            //alert('https://cs20.salesforce.com/'+accountIdValue);
+            location.replace('/'+accountIdValue);            
+            }
+    </script>
+ 
+    <!--attributes-->
+    <apex:attribute name="accountId" description="This is the value for the Account Id." type="Id" required="true"/>
+    <apex:attribute name="selectedMarket" description="This is the selected market value." type="String" required="true"/>
+    <apex:attribute name="renderChart" description="It is used to store the render chart." type="Boolean" required="true"/>
+    <!--/attributes-->
+    
+    <!-- Dashboard section which displays when selected market is All -->
+    <div id="chart1">
+    	<apex:pageBlockSection id="pbs2" rendered="{!renderChart}" >
+        	<apex:outputLink onclick="reportView('{!accountId}');" style="text-decoration: none">
+            	<analytics:reportChart developerName="BOT_Drug_Access_by_Payer" filter="[{column:'FK_ACC_ID', operator:'equals', value:'{!accountId}'}]" showRefreshButton="false" />
+             </apex:outputLink>
+        </apex:pageBlockSection>
+    </div>
+    <!-- /Dashboard section -->
+            
+    <!-- Dashboard section which displays when selected market is Not equals to All -->
+    <div id="chart2">
+    	<apex:pageBlockSection id="pbs3" rendered="{!NOT(renderChart)}">
+            <apex:outputLink onclick="reportView('{!accountId}');" style="text-decoration: none">
+            	<analytics:reportChart hideOnError="true" developerName="BOT_Drug_Access_by_Payer" filter="[{column:'FK_ACC_ID', operator:'equals', value:'{!accountId}'},{column:'CUST_NAME',operator:'equals',value:'{!selectedMarket}'}]" showRefreshButton="false"/>
+            </apex:outputLink>
+        </apex:pageBlockSection>
+    </div> 
+    <!-- /Dashboard section -->
+    
+</apex:component>

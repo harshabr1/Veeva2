@@ -1,0 +1,59 @@
+<!-- 
+Name : BOT_BenefitDesignLine_View
+Created by : Sreenivasulu Adipudi
+Created Date : 28/08/2018
+Description : This VF page is written by BusinessOne Technologies Inc. 
+It displays the Benefit design line (Drug) records associated to selected Benefit Design with maket values 
+as dropdown and It can filter drugs by the selected market.
+-->
+<apex:page standardController="Benefit_Design_vod__c" extensions="BOT_BenefitDesignLine_Extn" >
+    <apex:messages />
+    <apex:form >
+        <apex:pageBlock >
+            
+            <!-- Channel dropdown Filter -->
+            <apex:pageBlockSection id="PB1" columns="1" rendered="{!if(setMarketsSize > 0, true, false)}">
+                <apex:outputPanel >
+                    <apex:outputLabel >Select Market </apex:outputLabel>&nbsp;
+                    <apex:selectList size="1" value="{!selectedMarket}">
+                        <apex:selectOptions value="{!DynamicList}" />
+                        <apex:actionSupport action="{!marketFilterRetrieve}" event="onchange" reRender="PB2" status="status" />
+                    </apex:selectList>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+            <!-- /Channel dropdown Filter -->
+            
+            <apex:pageBlockSection rendered="{!IF(setMarketsSize==0,'TRUE','FALSE')}" >
+                <apex:outputLabel style="font-size: 15px" value="Records not found." />
+            </apex:pageBlockSection>
+        
+        </apex:pageBlock>
+        
+        <!-- Processing status -->
+        <apex:actionStatus id="status" startText="Loading...." startStyle="font-color:red;">
+            <apex:facet name="start">
+                <apex:image value="/img/loading.gif" />
+            </apex:facet>
+        </apex:actionStatus>
+        <!-- /Processing status -->
+        
+        <!-- Drugs table section -->
+        <apex:pageBlock id="PB2" title="Total Drugs ({!lstBenefitDesignLine.size})" rendered="{!if(setMarketsSize > 0, true, false)}">
+            <div style="overflow: scroll; width: 100%; height: 300px;">
+            <apex:pageBlockSection columns="1">
+                <apex:outputPanel >
+                    <apex:pageBlockTable value="{!lstBenefitDesignLine}" var="objBenefitDesignLine" cellpadding="2" cellspacing="2" >
+                        <apex:column value="{!objBenefitDesignLine.Product_vod__r.Name}" style="{!IF((objBenefitDesignLine.Competitor_vod__c==false),"font-weight:bold",'')}"/>
+                        <apex:column value="{!objBenefitDesignLine.Status_Source_vod__c}" />
+                        <apex:column value="{!objBenefitDesignLine.Restrictions_Source_vod__c}" />
+                        <apex:column value="{!objBenefitDesignLine.Copay_Source_vod__c}" />
+                        <apex:column value="{!objBenefitDesignLine.Notes_Source_vod__c}" />
+                    </apex:pageBlockTable>      
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+            </div>
+        </apex:pageBlock>
+        <!-- /Drugs table section -->
+        
+    </apex:form>
+</apex:page>

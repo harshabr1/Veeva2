@@ -1,0 +1,88 @@
+<!--
+Name			: BOT_Mass_Delete
+Created By		: Sreenivasulu A
+Created Date	: 09-JAN-2019
+Overview		: This Page is written by BusinessOne Technologies Inc. It is used to perform delete opration on the specified object.
+-->
+<apex:page controller="BOT_Mass_Delete_Controller" sidebar="false" tabStyle="Mass_Delete__tab">
+    <apex:pageMessages />
+    <script type="text/javascript">
+		function confirmDelete() {
+            return confirm('Records will be deleted Peminently. Do you want to continue?');
+		}
+    </script>
+    <apex:form >
+        <apex:pageBlock >
+            
+            <!-- Processing status -->
+            <apex:actionStatus id="status" startText="Loading...." startStyle="font-color:red;">
+                <apex:facet name="start">
+                    <apex:image value="/img/loading.gif" />
+                </apex:facet>
+            </apex:actionStatus>
+            <!-- /Processing status -->
+            
+            <apex:pageBlockSection id="PBS2" columns="1" title="Total Plan Product Records : {!planProductCount}" >
+               	
+                <!--
+                <apex:commandbutton value="Delete Accounts" action="{!deleteAccounts}" onClick="if(!confirmDelete()) return false;" disabled="{!if(accountCount > 0,'FALSE','TRUE')}">
+                    <apex:outputLabel value=" Click here to delete Account records" />
+                </apex:commandbutton>
+				-->
+                <apex:commandbutton value="Delete Plan Product" action="{!deletePlanProduct}" onClick="if(!confirmDelete()) return false;" disabled="{!if(planProductCount > 0,'FALSE','TRUE')}">
+                	<apex:outputLabel value=" Click here to delete Plan Product records "  />
+                </apex:commandbutton>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="1" title="Total Benefit Design Records : {!benefitDesignCount}">
+                <apex:commandbutton value="Delete Benefit Design" action="{!deleteBenefitDesign}" onClick="if(!confirmDelete()) return false;" disabled="{!if(benefitDesignCount > 0,'FALSE','TRUE')}">
+                	<apex:outputLabel value=" Click here to delete Benefit Design records "/>
+                </apex:commandbutton>
+            </apex:pageBlockSection>
+                
+            <apex:pageBlockSection columns="1" title="Total Pharmacy Service Records : {!pharmacyServiceCount}">
+                <apex:commandbutton value="Delete Pharmacy Service" action="{!deletePharmacyService}" onClick="if(!confirmDelete()) return false;" disabled="{!if(pharmacyServiceCount > 0,'FALSE','TRUE')}">	
+            		<apex:outputLabel value=" Click here to delete Pharmacy Service records "/>
+                </apex:commandbutton>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="1" title="Total Specialty Provider JO Records : {!specialtyProviderJOCount}">
+                <apex:commandbutton value="Delete Specialty Provider JO" action="{!deleteSpecialtyProviderJO}" onClick="if(!confirmDelete()) return false;" disabled="{!if(specialtyProviderJOCount > 0,'FALSE','TRUE')}">	
+            		<apex:outputLabel value=" Click here to delete Specialty Provider JO records "/>
+                </apex:commandbutton>
+            </apex:pageBlockSection>
+                
+                <!--
+                <apex:commandbutton value="Delete Coverage Policy" action="{!deleteCoveragePolicy}" onClick="if(!confirmDelete()) return false;" disabled="{!if(coveragePolicyCount > 0,'FALSE','TRUE')}">	
+            		<apex:outputLabel value=" Click here to delete Coverage Policy records "/>
+                </apex:commandbutton>
+                -->
+         	
+            <apex:pageBlockSection columns="1" title="Total Drug Access Records : {!drugAccessCount}" >
+                <apex:commandbutton value="Delete Drug Access" action="{!deleteDrugAccess}" onClick="if(!confirmDelete()) return false;" disabled="{!if(drugAccessCount > 0,'FALSE','TRUE')}" status="status" >	
+            		<apex:outputLabel value=" Click here to delete Drug Access records " />
+                </apex:commandbutton>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="1"  title="Total Thera Class Records : {!theraClassCount}" >
+                <apex:commandbutton value="Delete Thera Class" action="{!deleteTheraClass}" onClick="if(!confirmDelete()) return false;" disabled="{!if(theraClassCount > 0,'FALSE','TRUE')}">	
+            		<apex:outputLabel value=" Click here to delete Thera class records "/>
+                </apex:commandbutton>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="1"  title="Total Product Formulary Records : {!productFormularyCount}" >
+                <apex:commandbutton value="Delete Product Formulary" action="{!deleteProductFormulary}" onClick="if(!confirmDelete()) return false;" disabled="{!if(productFormularyCount > 0,'FALSE','TRUE')}">
+            		<apex:outputLabel value=" Click here to delete Product Formulary records "/>
+                </apex:commandbutton>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageBlock >
+        	<apex:pageBlockSection id="PBS1" columns="1" >
+                <apex:commandbutton value="Delete All" action="{!deleteAll}" onClick="if(!confirmDelete()) return false;">
+                	<apex:outputLabel value=" Click here to delete All records form the Org "  />
+                </apex:commandbutton>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

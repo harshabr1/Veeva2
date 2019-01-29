@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>BOT_Benefit_Design_ID__c</fullName>
+        <description>To store the BOT Formulary ID. It is used for BOT internal reference.</description>
+        <externalId>false</externalId>
+        <label>Benefit Design ID</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BOT_Benefit_Design__c</fullName>
+        <description>To store benefit design name like 2 tier or 3 tier etc</description>
+        <externalId>false</externalId>
+        <label>Benefit Design</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BOT_Formulary_Product_ID__c</fullName>
+        <description>To store the BOT Drug Id. It is used for BOT internal reference.</description>
+        <externalId>false</externalId>
+        <label>Formulary Product ID</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BOT_Is_BOT_Data__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is created by BusinessOne technologies. This field is used to identify the record created by BOT or Veeva.</description>
+        <externalId>false</externalId>
+        <label>Is BOT Data</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BOT_Market__c</fullName>
+        <description>To pull market from the Formulary Product object</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Product_vod__r.Market_vod__c)</formula>
+        <label>Market</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <recordTypes>
+        <fullName>BOT_Benefit_Design_Line</fullName>
+        <active>true</active>
+        <description>It is created by BusinessOne Technologies Inc and used to store BOT Benefit design records with drugs.</description>
+        <label>BOT_Benefit Design Line</label>
+    </recordTypes>
+</CustomObject>

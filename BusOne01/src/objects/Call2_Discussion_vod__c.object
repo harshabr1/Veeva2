@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <recordTypes>
+        <fullName>BOT_Call_Discussion</fullName>
+        <active>true</active>
+        <label>BOT Call Discussion</label>
+    </recordTypes>
+</CustomObject>

@@ -1,0 +1,36 @@
+<!--
+Name 		 : BOT_CoveragePolicyView
+Created By	 : Harsha BR
+Created Date : 12-Nov-2018
+Overview 	 : It is written by BusinessOne Technologies Inc. It will display the details reagrding the Coverage Policy. 
+-->
+<apex:page standardController="BOT_Coverage_Policy__c" extensions="BOT_CoveragePolicyViewExtn">
+    <apex:form id="theForm">
+        <apex:pageBlock id="thePB">
+            
+            <!-- Start Diagnostic Requirements for Initial Therapy Section -->
+            <apex:pageBlockSection columns="1" collapsible="true" title="Diagnostic Requirements for Initial Therapy">
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="{!lstCoveragePolicy[0].BOT_DRI__c}" escape="false" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <!-- End Diagnostic Requirements for Initial Therapy Section -->
+            
+             <!-- Start Prior Authorization Details -->
+            <apex:pageBlockSection columns="1" collapsible="true" title="Prior Authorization Details">
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="{!lstCoveragePolicy[0].BOT_PADetail__c}" escape="false" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <!-- End Prior Authorization Details -->
+            
+            <!-- Start Step Therapy Details -->
+            <apex:pageBlockSection columns="1" collapsible="true" title="Step Therapy Details">
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="{!lstCoveragePolicy[0].BOT_STDetail__c}" escape="fasle" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <!-- End Step Therapy Details -->
+        </apex:pageBlock>      
+    </apex:form>        
+</apex:page>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>(BOT) It is a junction object between plan product and formulary objects. It is having Master-Detail relationship with Plan product and Plan formulary objects.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>BOT_Account__c</fullName>
+        <description>Getting account name from Plan product object</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK( BOT_Plan_Product__r.BOT_Account__r.Id  ,  BOT_Plan_Product__r.BOT_Account__r.Name )</formula>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BOT_Benefit_Design_ID__c</fullName>
+        <description>It is used to store the BOT formulary ID. It is used for BOT internal reference only.</description>
+        <externalId>false</externalId>
+        <label>Benefit Design ID</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BOT_Benefit_Design__c</fullName>
+        <description>Master-Detail relationship to Benefit Design Object.</description>
+        <externalId>false</externalId>
+        <label>Benefit Design</label>
+        <referenceTo>Benefit_Design_vod__c</referenceTo>
+        <relationshipName>Benefit_Design</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>BOT_Channel__c</fullName>
+        <description>Getting channel form the Plan product object</description>
+        <externalId>false</externalId>
+        <formula>TEXT(BOT_Plan_Product__r.BOT_Channel__c)</formula>
+        <label>Channel</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BOT_Plan_Product_ID__c</fullName>
+        <description>It is used to store the plan product ID. It is used for BOT internal reference only.</description>
+        <externalId>false</externalId>
+        <label>Plan Product ID</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BOT_Plan_Product__c</fullName>
+        <description>Master-Detail relationship to Plan product object</description>
+        <externalId>false</externalId>
+        <label>Plan Product</label>
+        <referenceTo>BOT_Plan_Product__c</referenceTo>
+        <relationshipLabel>Plan Formulary</relationshipLabel>
+        <relationshipName>Plan_Product</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>BOT_SubChannel__c</fullName>
+        <description>It is used to pull subChannel value from the parent Plan Product record.</description>
+        <externalId>false</externalId>
+        <formula>BOT_Plan_Product__r.BOT_SubChannel__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SubChannel</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Plan-Product Formulary</label>
+    <nameField>
+        <displayFormat>PF-{0000}</displayFormat>
+        <label>S No</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Plan-Product Formulary</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

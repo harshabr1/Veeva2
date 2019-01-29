@@ -1,0 +1,45 @@
+<!--
+Name            : BOT_CoveragePolicy_Component
+Created by      : Sreenivasulu Adipudi
+Created date    : 20-DEC-2018
+Description     : This Visualforce Components is created by BusinessOneTechnologies Inc. It is used to build the Coverage policy details of the selected Account. 
+This component is used in BOT_AccountCoveragePolicy and BOT_AccountPlanCoveragePolicy visualforce pages. 
+-->
+<apex:component >
+    
+    <!--attributes-->
+    <apex:attribute name="lstCoveragePolicy" description="This is used to hold the list of coverage policy records." type="BOT_Coverage_Policy__c[]" required="true"/>
+    <!--/attributes-->
+    
+    <!-- Coverage Policy table section-->
+    <div > 
+        <apex:pageBlockSection columns="1">
+            <apex:outputPanel >
+                <apex:pageBlockTable value="{!lstCoveragePolicy}" var="objCoveragePolicy" cellpadding="2" cellspacing="2">
+                    <apex:column value="{!objCoveragePolicy.BOT_Channel__c}" />
+                    <apex:column headerValue="Drug Name">
+                        <apex:outputLink value="/{!objCoveragePolicy.id}" target="_top" style="font-weight">{!objCoveragePolicy.BOT_Formulary_Product__r.Name}</apex:outputLink>
+                    </apex:column>
+                    <apex:column value="{!objCoveragePolicy.BOT_Score__c}" />
+                    <apex:column value="{!objCoveragePolicy.BOT_Indication__c}" />
+                    <apex:column value="{!objCoveragePolicy.BOT_Sub_Indication__c}" />
+                    <apex:column headerValue="PA Form">
+                        <!-- Downloading PA form of this plan when user click on download button -->
+                        <apex:repeat value="{!objCoveragePolicy.attachments}" var="attach">
+                            <apex:outputLink value="{!URLFOR($Action.Attachment.Download, attach.Id)}" target="_blank" rendered="{!if(contains(attach.name,'PA Form'),true,false)}">View</apex:outputLink>
+                        </apex:repeat>
+                        <!-- /Downloading PA form of this plan when user click on download button -->                                
+                    </apex:column>
+                    <apex:column headerValue="Coverage Policy Form">
+                        <!-- Downloading Coverage Policy form of this plan when user click on download button -->
+                        <apex:repeat value="{!objCoveragePolicy.attachments}" var="attach">
+                            <apex:outputLink value="{!URLFOR($Action.Attachment.Download, attach.Id)}" target="_blank" rendered="{!if(Not(contains(attach.name,'PA Form')),true,false)}">View</apex:outputLink>
+                        </apex:repeat>
+                        <!-- Downloading Coverage Policy form of this plan when user click on download button -->    
+                    </apex:column>
+                </apex:pageBlockTable>      
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+	</div>
+    <!-- /Coverage Policy table section-->
+</apex:component>

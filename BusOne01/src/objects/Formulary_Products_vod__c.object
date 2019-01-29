@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>BOT_Formulary_Product_ID__c</fullName>
+        <description>It is created by BusiessOne technologies. It is used to store BOT Drug ID.</description>
+        <externalId>true</externalId>
+        <label>Formulary Product ID</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>BOT_Is_BOT_Data__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is created by BusinessOne technologies. This field is used to identify the record created by BOT or Veeva.</description>
+        <externalId>false</externalId>
+        <label>Is BOT Data</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <recordTypes>
+        <fullName>BOT_Formulary_Product</fullName>
+        <active>true</active>
+        <description>It is created by BusinessOne Technologies Inc and used to store BOT Drug level records.</description>
+        <label>BOT_Formulary Product</label>
+    </recordTypes>
+</CustomObject>
